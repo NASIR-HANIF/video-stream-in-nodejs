@@ -26,8 +26,12 @@ app.get('/video', function(req, res){
         "Content-Length": contentLength,
         "Content-Type": "video/mp4"
     }
+    // parsel data send with status code 206 set keya
+    // pipe read to write state me send kearta hey
     res.writeHead(206,headers);
+    // start or end ka matlab hey keh kaha se data read kerna hey or end kaha pe kearna hey
     const videoStream = fs.createReadStream(videoPath,{start, end});
+    // pipe write streame ki status ko bhi change karey ga
     videoStream.pipe(res);
 
 })
